@@ -1,1 +1,22 @@
-
+** RCNN for text sentiment classification
+*** 论文 [[Convolutional Neural Networks for Sentence Classification]]
+*** Requirements
+    1) pip install -r requirements.txt
+    2) https://github.com/hanxiao/bert-as-service 使用bert-as-service
+    3) 需要一台能运行bert-as-service的服务器，最好有GPU，然后 pip install bert-serving-server
+*** Usage-textcnn
+**** 服务器启动bert-as-service
+     1) https://github.com/hanxiao/bert-as-service bert-as-service
+     2) bert-serving-start -model_dir ‘your pretrained model dir’ -num_worker=4 -max_seq_len=200 -pooling_strategy=NONE -port=8190
+**** 清洗数据
+     1) cd scr/
+     2) python3 clean.py
+**** n折交叉训练
+     1) cd src/
+     2) python3 split_data.py (default k=5)
+**** train
+     1) cd script/
+     2) bash train.sh
+**** 模型融合
+     1) cd src/
+     2) python get_result.py -k=5 -output=../output/final.csv -model='your defined model_output dir'
