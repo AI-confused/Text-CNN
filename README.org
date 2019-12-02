@@ -1,4 +1,4 @@
-** RCNN for text sentiment classification
+** TextCNN for text sentiment classification
 *** 论文 [[Convolutional Neural Networks for Sentence Classification]]
 *** Requirements
     1) pip install -r requirements.txt
